@@ -5,26 +5,28 @@ const zod = require('zod');
 const {User, Account} = require('../db');
 const jwt = require('jsonwebtoken');
 const {JWT_SECRET} = require('../config');
-const authMiddleWare = require('../middleware');
+const {authMiddleWare} = require('../middleware');
+router.use(express.json());
 
 const signupBody = zod.object ({
-    username : zod.string().email(),
-    password : zod.string(),
+    userName : zod.string().email(),
     firstName : zod.string(),
-    lastName : zod.string()
+    lastName : zod.string(),
+    password : zod.string(),
 })
 
-router.post('signup', async (req, res) => {
-    const {success} = signupBody.safeParse(signupBody);
+router.post('/signup', async (req, res) => {
+    console.log(req.body);
+    const {success} = signupBody.safeParse(req.body);
 
     if(!success){
         return res.status(411).json({
-            message : "Email already taken / Incorrect inputs"
+            message : "Incorrect inputs"
         })
     }
 
-    const existingUser = User.findOne({
-        username : req.body.username
+    const existingUser = await User.findOne({
+        userName : req.body.userName
     })
 
     if(existingUser) {
@@ -34,14 +36,24 @@ router.post('signup', async (req, res) => {
     }
 
     try {
+        console.log("Request Body: ",req.body);
+        //console.log("User bfr: ",user);
+        console.log("User Data:", {
+            userName: req.body.userName,
+            password: req.body.password,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+        });
+
         const user = await User.create ({
-            username : req.body.username,
+            userName : req.body.userName,
             password : req.body.password,
             firstName : req.body.firstName,
             lastName : req.body.lastName,
-        })
+        });
+        console.log("User: ",user);
         const userId = user._id;
-
+        
         await Account.create({
             userId,
             balance: 1 + Math.random() * 10000
@@ -63,6 +75,7 @@ router.post('signup', async (req, res) => {
                 errors: e.errors.password.message,
             });
         }else{
+            console.error(e);
             return res.status(500).json({
                 msg: "Server error",
             });
@@ -72,7 +85,7 @@ router.post('signup', async (req, res) => {
 })
 
 const signinBody = zod.object({
-    username: zod.string().email(),
+    userName: zod.string().email(),
     password: zod.string()
 })
 
@@ -86,15 +99,17 @@ router.post('/signin', async (req, res) => {
     }
 
     const user = await User.findOne({
-        username: req.body.username,
+        userName: req.body.userName,
         password: req.body.password
     });
 
     if(user){
-        const token = jwt.sign({
+        let token = jwt.sign({
             userId : user._id
         },JWT_SECRET)
 
+        const decoded = jwt.verify(token, JWT_SECRET);
+        const userId = decoded.userId;
         res.json({
             token: token
         })
@@ -130,12 +145,12 @@ router.put('/', authMiddleWare, async (req, res) => {
 });
 
 router.get('/bulk', async(req, res) => {
-    const filer = req.query.filter || "";
+    const filter = req.query.filter || "";
 
     const users = await User.find({
         $or: [{
             firstName: {
-                $regex: filer,
+                $regex: filter,
             }
         },{
             lastName: {
@@ -146,7 +161,7 @@ router.get('/bulk', async(req, res) => {
 
     res.json({
         users: users.map((user)=> ({
-            username: user.username,
+            userName: user.userName,
             firstName: user.firstName,
             lastName: user.lastName,
             _id: user._id,
