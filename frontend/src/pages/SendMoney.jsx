@@ -44,14 +44,35 @@ export const SendMoney = () => {
                     </div>
 
                     <button onClick={() => {
+                        const token = localStorage.getItem("token")
+                        console.log(token)
+
+                        if (!token) {
+                            console.error("Token is missing or invalid.");
+                            // Add logic to handle the missing token, e.g., redirect to login page
+                            return;
+                        }
+
                         axios.post("http://localhost:3000/api/v1/account/transfer", {
                             to: id,
                             amount
                         }, {
                             headers: {
-                                Authorization: "Bearer " + localStorage.getItem("token")
+                                Authorization: `Bearer ${token}`
+                                // Authorization: "Bearer " + localStorage.getItem("token")
                             }
                         })
+                        .then(response => {
+                            console.log("Transfer successful:", response.data);
+                            // Add any additional logic or UI updates for a successful transfer
+                        })
+                        .catch(error => {
+                            console.error("Transfer failed:", error);
+                            console.error("Status code:", error.response.status);
+                            console.error("Error response:", error.response.data);
+                            // Add logic to handle and display errors to the user
+                        });
+                        
                         }} className="justify-center rounded-md text-sm font-medium ring-offset-background transition-colors h-10 px-4 py-2 w-full bg-green-500 text-white">
                         Initiate Transfer
                     </button>

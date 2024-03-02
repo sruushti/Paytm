@@ -23,9 +23,18 @@ router.post("/transfer", authMiddleWare, async (req, res) => {
     session.startTransaction();
 
     const {amount, to} = req.body;
+    console.log("Transfer req body: ", req.body);
+    console.log("Transfer request to userId:", to);
     const account = await Account.findOne({
         userId: req.userId
     }).session(session);
+
+    if (typeof to !== 'string') {
+        await session.abortTransaction();
+        return res.status(400).json({
+            msg: "'to' must be a string",
+        });
+    }
 
     if(!account || account.balance < amount){
         await session.abortTransaction();
@@ -34,16 +43,28 @@ router.post("/transfer", authMiddleWare, async (req, res) => {
         });
     }
 
-    const toAccount = await Account.findOneAndDelete({
-        userId: to
-    }).session(session);
-
-    if(!toAccount){
+    if (req.userId === to) {
         await session.abortTransaction();
         return res.status(400).json({
-            msg: "Invalid acount"
+            msg: "Cannot transfer to yourself",
         });
     }
+
+    console.log("Type of 'to':", typeof to);
+    console.log("Transfer request to userId:", to);
+const toAccount = await Account.findOne({ userId: to }).session(session);
+console.log("Found To Account:", toAccount);
+
+    
+    console.log("To account:", toAccount);
+    
+    if (!toAccount) {
+        await session.abortTransaction();
+        return res.status(400).json({
+            msg: "Invalid account"
+        });
+    }
+    
 
     await Account.updateOne({
         userId: req.userId
