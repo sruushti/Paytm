@@ -27,12 +27,29 @@ const Navbar = () => {
                 </button>
             </div>
             <div className={`${isOpen ? "block" : "hidden"} w-full block flex-grow lg:flex lg:items-center lg:w-auto`}>
-            <ul className="text-sm lg:flex-grow lg:flex lg:justify-center lg:space-x-5">
-                    <li><a href="#" className="text-lg block mt-4 lg:inline-block lg:mt-0 text-gray-900 hover:text-white mr-4">Home</a></li>
-                    <li><a href="#" className="text-lg block mt-4 lg:inline-block lg:mt-0 text-gray-900 hover:text-white mr-4">About</a></li>
-                    <li><a href="#" className="text-lg block mt-4 lg:inline-block lg:mt-0 text-gray-900 hover:text-white mr-4">Features</a></li>
-                    <li><a href="#" className="text-lg block mt-4 lg:inline-block lg:mt-0 text-gray-900 hover:text-white mr-4">Contact</a></li>
-                    <li><a href="/signup" className="text-lg block mt-4 lg:inline-block lg:mt-0 text-gray-900 hover:text-white">Get started</a></li>
+                <ul className="text-sm lg:flex-grow lg:flex lg:justify-center lg:space-x-5">
+                    <li><a href="#" className="text-lg block mt-4 lg:inline-block lg:mt-0 text-gray-900 hover:text-white hover:bg-gray-900 transition duration-300 py-2 px-4 rounded">
+                            Home
+                        </a>
+                    </li>
+                    <li><a href="#" className="text-lg block mt-4 lg:inline-block lg:mt-0 text-gray-900 hover:text-white hover:bg-gray-900 transition duration-300 py-2 px-4 rounded">
+                            Features
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" className="text-lg block mt-4 lg:inline-block lg:mt-0 text-gray-900 hover:text-white hover:bg-gray-900 transition duration-300 py-2 px-4 rounded">
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" className="text-lg block mt-4 lg:inline-block lg:mt-0 text-gray-900 hover:text-white hover:bg-gray-900 transition duration-300 py-2 px-4 rounded">
+                            Contact
+                        </a>
+                    </li>
+                    <li><a href="/signin" className="text-lg block mt-4 lg:inline-block lg:mt-0 text-gray-900 bg-transparent border border-gray-900 hover:bg-gray-900 hover:text-white font-medium py-2 px-4 rounded transition duration-300">
+                            Sign in
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

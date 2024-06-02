@@ -6,7 +6,7 @@ export default {
   ],
   theme: {
     extend: {
-      color: {
+      colors: {
         orange: '#ea580c'
       }
     },

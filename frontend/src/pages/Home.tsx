@@ -75,6 +75,7 @@ export const Home = () => {
             <div className="text-center md:text-left mb-4 md:mb-0">
                 <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Smooth Transactions, Simplified</h1>
                 <p className="text-xl text-gray-700">Ensuring seamless and secure transactions for authorized users</p>
+                <Link to={'signup'}  className="inline-block mt-4 px-8 py-3 bg-blue-600 text-white font-semibold text-lg rounded-lg shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300">Sign up now!</Link>
             </div>
             <div className="pt-4">
                 <img src={banner} alt="Hero image" className="w-full h-auto object-cover" />
