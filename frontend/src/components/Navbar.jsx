@@ -10,7 +10,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="flex items-center justify-between flex-wrap bg-white shadow-xl p-6">
+        <nav className="flex items-center justify-between flex-wrap bg-white shadow-xl p-6 sticky top-0 z-50">
             <div className="flex items-center flex-shrink-0 text-gray-900 mr-6">
                 <Logo className="mr-3 h-6 sm:h-9" />
                 <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-black">EasyPay</span>

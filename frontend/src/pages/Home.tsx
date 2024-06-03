@@ -4,7 +4,7 @@ import { Logo } from "../components/Logo";
 import {Sidebar} from "../components/SideBar"
 import  Navbar  from "../components/Navbar.jsx";
 import banner from "../assets/images/banner.jpeg"
-
+import { LockClosedIcon, QrCodeIcon, ArrowsPointingOutIcon, GiftIcon, DocumentTextIcon, CalculatorIcon } from '@heroicons/react/24/outline';
 export const Home = () => {
     return (
         <>
@@ -82,20 +82,64 @@ export const Home = () => {
             </div>
         </section>
 
-        <section>
-            <div>
-                <h2>Get started to make some transactions</h2>
-            </div>
-            <div>
-                <button>Login</button>
-                <button>Signup</button>
-                <button>How it works</button>
+
+        <section className="py-12 bg-blue-900">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 className="text-4xl font-extrabold text-white mb-8">Features</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-3xl transition duration-300">
+                        <LockClosedIcon className="w-12 h-12 text-blue-800 mx-auto"/>
+                        <h4 className="text-xl font-semibold text-blue-800 mt-4">Authentication and Security</h4>
+                        <p className="text-gray-700 mt-2">We will take extra care to protect our customers’ data</p>
+                    </div>
+                    <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-3xl transition duration-300">
+                        <QrCodeIcon className="w-12 h-12 text-blue-800 mx-auto"/>
+                        <h4 className="text-xl font-semibold text-blue-800 mt-4">QR Code</h4>
+                        <p className="text-gray-700 mt-2">We are aiming to provide QR codes for quick and convenient transactions and information sharing.</p>
+                    </div>
+                    <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-3xl transition duration-300">
+                        <ArrowsPointingOutIcon className="w-12 h-12 text-blue-800 mx-auto"/>
+                        <h4 className="text-xl font-semibold text-blue-800 mt-4">Transfer</h4>
+                        <p className="text-gray-700 mt-2">Seamlessly transfer funds between accounts with instant processing and minimal fees.</p>
+                    </div>
+                    <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-3xl transition duration-300">
+                        <GiftIcon className="w-12 h-12 text-blue-800 mx-auto"/>
+                        <h4 className="text-xl font-semibold text-blue-800 mt-4">Rewards</h4>
+                        <p className="text-gray-700 mt-2">Earn and redeem rewards for your transactions.</p>
+                    </div>
+                    <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-3xl transition duration-300">
+                        <DocumentTextIcon className="w-12 h-12 text-blue-800 mx-auto"/>
+                        <h4 className="text-xl font-semibold text-blue-800 mt-4">Invoices</h4>
+                        <p className="text-gray-700 mt-2">Create, send, and manage invoices efficiently, ensuring timely payments and record keeping.</p>
+                    </div>
+                    <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-3xl transition duration-300">
+                        <CalculatorIcon className="w-12 h-12 text-blue-800 mx-auto"/>
+                        <h4 className="text-xl font-semibold text-blue-800 mt-4">Budgeting Tools</h4>
+                        <p className="text-gray-700 mt-2">These help to track your expenses, set goals, and manage your finances effectively.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section>
-            <div>Features</div>
-        </section>
+
+        <section className="py-12 bg-white">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-3xl font-extrabold text-blue-600 mb-8">Get started to make some transactions</h2>
+        <div className="flex justify-center space-x-4">
+            <button className="bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg border-2 border-blue-600 hover:bg-white hover:text-blue-600 transition duration-300">
+                Login
+            </button>
+            <button className="bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg border-2 border-blue-600 hover:bg-white hover:text-blue-600 transition duration-300">
+                Signup
+            </button>
+            <button className="bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg border-2 border-blue-600 hover:bg-white hover:text-blue-600 transition duration-300">
+                How it works
+            </button>
+        </div>
+    </div>
+</section>
+
+
 
         <section>
             <div>
