@@ -50,6 +50,7 @@ const Navbar = () => {
                             Sign in
                         </a>
                     </li>
+                    
                 </ul>
             </div>
         </nav>
