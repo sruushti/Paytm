@@ -6,7 +6,11 @@ import  Navbar  from "../components/Navbar.jsx";
 import banner from "../assets/images/banner.jpeg"
 import imgone from "../assets/images/img1.jpeg"
 import imgtwo from "../assets/images/img2.jpg"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 import { LockClosedIcon, QrCodeIcon, ArrowsPointingOutIcon, GiftIcon, DocumentTextIcon, CalculatorIcon } from '@heroicons/react/24/outline';
+
+
 export const Home = () => {
     return (
         <>
