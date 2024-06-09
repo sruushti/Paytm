@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@heroicons/react": "^1.0.6",
+    "react-flow": "^1.0.3",
+    "react-rnd": "^10.4.11",
     "swiper": "^11.1.4"
   }
 }

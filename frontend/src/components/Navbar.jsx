@@ -24,8 +24,8 @@ const Navbar = () => {
     }, [theme]);
 
     return (
-        <nav className="flex items-center justify-between flex-wrap bg-white shadow-xl p-6 sticky top-0 z-50">
-            <div className="flex items-center flex-shrink-0 text-gray-900 mr-6">
+        <nav className="flex items-center justify-between flex-wrap bg-white shadow-xl p-2 lg:p-4 sticky top-0 z-50">
+            <div className="flex items-center flex-shrink-0 text-gray-900 mr-2">
                 <Logo className="mr-3 h-6 sm:h-9" />
                 <span className="self-center text-3xl font-semibold whitespace-nowrap dark:text-black">EasyPay</span>
             </div>

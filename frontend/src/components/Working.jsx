@@ -1,35 +1,51 @@
 import React, { useCallback, useState } from 'react';
-import ReactFlow, { addEdge, applyEdgeChanges, applyNodeChanges } from 'reactflow';
+import ReactFlow,{ReactFlowProvider, useNodesState, useEdgesState, addEdge, MiniMap, Controls } from 'reactflow';
+//import ReactFlow, { addEdge, applyEdgeChanges, applyNodeChanges , useNodesState, useEdgesState} from 'reactflow';
 import 'reactflow/dist/style.css';
-import '../style/Working.css'
+import CustomNode from './CustomNode.jsx';
+
+import ZoomNode from './ZoomNode.jsx';
+
+import 'reactflow/dist/style.css';
+import './index.css';
+
+const snapGrid = [20, 20];
+const nodeTypes = {
+  zoom: ZoomNode,
+  custom: CustomNode,
+};
 
 const initialNodes = [
     {
         id: '1',
-        type: 'input',
-        data: {label: 'Start'},
-        position: {x: 250, y: 25}
+        type: 'custom',
+        data: {label: <h2>Start</h2>},
+        position: {x: 350, y: 105}
     }, {
         id: '2',
-        data: {label: <h3>Signup</h3>},
-        position: {x: 100, y: 175}
+        type: 'custom',
+        data: {label: <h2>Signup</h2> },
+        position: {x: 150, y: 205}
     }, {
         id: '3',
-        data: {label: <h3>Signin</h3>},
-        position: {x: 400, y: 175} 
+        type:'custom',
+        data: {label: <h2>Signin</h2>},
+        position: {x: 550, y: 205} 
     }, {
         id: '4',
-        data: { label: 'User' },
-        position: { x: 250, y: 325 }
+        type: 'custom',
+        data: {label: <h2>User</h2>},
+        position: { x: 350, y: 305 }
       }, {
         id: '5',
-        data: { label: 'Balance Review' },
-        position: { x: 470, y: 325 }
+        type: 'custom',
+        data: {label: <h2>Balance Review</h2>},
+        position: { x: 490, y: 362 }
       }, {
         id: '6',
-        type: 'output',
-        data: { label: 'Payment' },
-        position: { x: 250, y: 475 }
+        type: 'custom',
+        data: {label: <h2>Payment</h2>},
+        position: { x: 352, y: 425 }
       }
 ];
 
@@ -56,15 +72,39 @@ function Working() {
         [setEdges]
     );
 
+    const defaultViewport = { x: 0, y: 0, zoom: 1.5 };
+
+   /* const Working = () => {
+    const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+    const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+    const onConnect = useCallback(
+        (params) => setEdges((eds) => addEdge({ ...params, animated: true }, eds)),
+        []
+    ); */
+
     return (
-        <div style={{ width: '100%', height: '400px' }}>
+        <ReactFlowProvider style={{width:'100%', height: '100%' }}>
             <ReactFlow 
                 nodes = {nodes}
                 edges = {edges}
                 onNodeChange = {onNodesChange}
                 onEdgesChange = {onEdgesChange}
-            />
-        </div>
+                nodeTypes={nodeTypes} 
+                /*nodes={nodes}
+                edges={edges}
+                onNodesChange={onNodesChange}
+                onEdgesChange={onEdgesChange}
+                onConnect={onConnect}
+                nodeTypes={nodeTypes}
+                snapToGrid={true}
+                snapGrid={snapGrid}
+                defaultViewport={defaultViewport}
+                attributionPosition="top-right" */
+                >
+                <MiniMap />
+                <Controls /> 
+                </ReactFlow>
+        </ReactFlowProvider>
     );
 }
 
