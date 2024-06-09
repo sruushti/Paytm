@@ -1,0 +1,36 @@
+.working-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Left column takes 1 part, right column takes 2 parts */
+    gap: 20px; /* Gap between columns */
+  }
+  
+  .left-column {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+  }
+  
+  .title {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .tagline {
+    font-size: 18px;
+    color: #666;
+    margin-top: 10px;
+  }
+  
+  .right-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .flow-container {
+    width: 80%;
+    height: 400px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2); /* Adjust shadow as needed */
+  }
+  

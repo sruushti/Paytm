@@ -6,76 +6,25 @@ import  Navbar  from "../components/Navbar.jsx";
 import banner from "../assets/images/banner.jpeg"
 import imgone from "../assets/images/img1.jpeg"
 import imgtwo from "../assets/images/img2.jpg"
+import {register} from 'swiper/element/bundle'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { LockClosedIcon, QrCodeIcon, ArrowsPointingOutIcon, GiftIcon, DocumentTextIcon, CalculatorIcon } from '@heroicons/react/24/outline';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
+import { LockClosedIcon, QrCodeIcon, ArrowsPointingOutIcon, GiftIcon, DocumentTextIcon, CalculatorIcon } from '@heroicons/react/24/outline';
+import Working from "../components/Working.jsx";
+
+register();
 
 export const Home = () => {
     return (
         <>
+        <head>
+	        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+        </head>
         <Navbar/>
-        {/*navbar
-        <input id="nav-toggle" type="checkbox" className="hidden">
-            <label id="show-button" for="nav-toggle" className="order-1 flex cursor-pointer items-center lg:order-1 lg:hidden">
-                <svg className="h-6 fill-current" viewBox="0 0 20 20">
-                    <title>NavBar</title>
-                </svg>
-            </label>
-            <label id="hide-button" for="nav-toggle" className="order-2 hidden cursor-pointer items-center lg:order-1">
-                <svg></svg>
-            </label>
-            <ul className="navbar-nav order-2 hidden w-full flex-[0_0_100%] lg:order-1 lg:flex lg:w-auto lg:flex-autho lg:justify-center lg:space-x-5">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Get started</a></li>
-            </ul>
-        </input> */}
-        {/*<header>
-            <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
-                <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-                    <div className="flex items-center">
-                        <Logo className="mr-3 h-6 sm:h-9" />
-                        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">EasyPay</span>
-                    </div>
-                    <div className="flex items-center lg:order-2">
-                        <a href="/signin" className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</a>
-                        <Link to={'/signup'}>
-                            <button className="btn btn-primary text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">Get started</button>
-                        </Link>
-                        <button data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
-                            <span className="sr-only">Open main menu</span>
-                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                            <svg className="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                        </button>
-                    </div>
-                    <div className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-                        <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                            <li>
-                                <a href="#" className="block py-2 pr-4 pl-3 text-white rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 dark:text-white" aria-current="page">Home</a>
-                            </li>
-                            <li>
-                                <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Company</a>
-                            </li>
-                            <li>
-                                <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Marketplace</a>
-                            </li>
-                            <li>
-                                <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Features</a>
-                            </li>
-                            <li>
-                                <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Team</a>
-                            </li>
-                            <li>
-                                <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-    </header> */}
         
         <section className="grid grid-cols-1 md:grid-cols-2 items-center pr-4 pl-4 h-screen">
             <div className="text-center md:text-left mb-4 md:mb-0">
@@ -88,8 +37,77 @@ export const Home = () => {
             </div>
         </section>
 
-
         <section className="py-12 bg-blue-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-4xl font-extrabold text-white mb-8">Features</h2>
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={1}
+          navigation
+          pagination={{ clickable: true }}
+          breakpoints={{
+            // when window width is >= 640px
+            640: {
+              slidesPerView: 1,
+            },
+            // when window width is >= 768px
+            768: {
+              slidesPerView: 2,
+            },
+            // when window width is >= 1024px
+            1024: {
+              slidesPerView: 3,
+            },
+          }}
+        >
+          <SwiperSlide>
+            <div className="bg-white p-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+              <LockClosedIcon className="w-12 h-12 text-blue-800 mx-auto"/>
+              <h4 className="text-xl font-semibold text-blue-800 mt-4">Authentication and Security</h4>
+              <p className="text-gray-700 mt-2">We will take extra care to protect our customers’ data</p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="bg-white p-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-3xl">
+              <QrCodeIcon className="w-12 h-12 text-blue-800 mx-auto"/>
+              <h4 className="text-xl font-semibold text-blue-800 mt-4">QR Code</h4>
+              <p className="text-gray-700 mt-2">We are aiming to provide QR codes for quick and convenient transactions</p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="bg-white p-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-3xl ">
+              <ArrowsPointingOutIcon className="w-12 h-12 text-blue-800 mx-auto"/>
+              <h4 className="text-xl font-semibold text-blue-800 mt-4">Transfer</h4>
+              <p className="text-gray-700 mt-2">Seamlessly transfer funds between accounts with instant processing and minimal fees</p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="bg-white p-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-3xl">
+              <GiftIcon className="w-12 h-12 text-blue-800 mx-auto"/>
+              <h4 className="text-xl font-semibold text-blue-800 mt-4">Rewards</h4>
+              <p className="text-gray-700 mt-2">Earn and redeem rewards for your transactions</p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="bg-white p-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-3xl">
+              <DocumentTextIcon className="w-12 h-12 text-blue-800 mx-auto"/>
+              <h4 className="text-xl font-semibold text-blue-800 mt-4">Invoices</h4>
+              <p className="text-gray-700 mt-2">Create, send, and manage invoices efficiently, ensuring timely payments</p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="bg-white p-6 rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-3xl ">
+              <CalculatorIcon className="w-12 h-12 text-blue-800 mx-auto"/>
+              <h4 className="text-xl font-semibold text-blue-800 mt-4">Budgeting Tools</h4>
+              <p className="text-gray-700 mt-2">These help to track your expenses, set goals, and manage your finances effectively.</p>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
+    </section>
+
+
+        {/*<section className="py-12 bg-blue-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 className="text-4xl font-extrabold text-white mb-8">Features</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -125,7 +143,7 @@ export const Home = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </section>*/}
 
 
         <section className="py-12 bg-white">
@@ -145,6 +163,10 @@ export const Home = () => {
     </div>
 </section>
 
+        <section>
+            <h2>How it works</h2>
+            <Working/>
+        </section>
 
 <section className="bg-white dark:bg-gray-900">
     <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
