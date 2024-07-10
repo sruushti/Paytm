@@ -1,6 +1,6 @@
 export function SubHeading({label}) {
     return (
-        <div className="text-slate-500 text-md pt-1 px-4 pb-4">
+        <div className="text-gray-500 text-md pt-1 pb-6">
             {label}
         </div>
     )

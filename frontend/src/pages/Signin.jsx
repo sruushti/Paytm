@@ -28,9 +28,9 @@ export const Signin = () => {
     }
   };
 
-    return <div className="bg-slate-300 h-screen flex justify-center">
+    return <div className="bg-slate-200 h-screen flex justify-center">
     <div className="flex flex-col justify-center">
-      <div className="rounded-lg bg-white w-80 text-center p-2 h-max px-4">
+      <div className="rounded-lg bg-white w-240 text-center p-4 h-max px-6">
         <Heading label={"Sign in"} />
         <SubHeading label={"Enter your credentials to access your account"} />
         <InputBox onChange={(e) => setUserName(e.target.value)}
