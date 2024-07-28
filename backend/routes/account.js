@@ -47,6 +47,8 @@ router.post("/transfer", authMiddleWare, async (req, res) => {
         message: "Invalid account",
       });
     }
+
+    const senderId = await req.userId;
   
     await Account.updateOne(
       {
@@ -61,7 +63,7 @@ router.post("/transfer", authMiddleWare, async (req, res) => {
   
     await Account.updateOne(
       {
-        userId: req.userId,
+        userId: toAccount.userId,
       },
       {
         $inc: {
